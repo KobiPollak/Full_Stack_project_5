@@ -2,12 +2,27 @@ import logo from './logo.svg';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import './App.css';
 import Login from './components/login'
+import Application from './components/application'
+
+import Info from './components/info';
+import Todos from './components/todos';
+import Posts from './components/posts';
+import Albums from './components/albums';
+import NotFound from './components/notfound';
 
 function App() {
   return (
     <BrowserRouter>
     <Routes>
-    <Route path='/' element={<Login />} />
+      <Route path='/' element={<Login />} />
+      <Route path='/application' element={<Application />} >
+        <Route index path="/application/info" element={<Info />} />
+        <Route path="/application/todos" element={<Todos />} />
+        <Route path="/application/posts" element={<Posts />} />
+        <Route path="/application/albums" element={<Albums />} />
+      </Route>
+      <Route path='*' element={<NotFound />} />
+              
 
     </Routes>
     

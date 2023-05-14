@@ -1,9 +1,11 @@
 import React , {useState, useEffect} from "react";
+import { useNavigate } from 'react-router-dom';
 import './login.css'
 
 const Login = () => {
     const [formValue, setFormValues] = useState({ username: '', password: '' });
-    const [data, setData] = useState([]);
+    const [data, setData] = useState();
+    const navigate = useNavigate();
 
 
     const handleChange = event => {
@@ -17,20 +19,42 @@ const Login = () => {
 
         await fetch('https://jsonplaceholder.typicode.com/users')
           .then(response => response.json())
-          .then(data => {
+          .then(all_data => {
+          console.log(all_data.find(user => user.username === formValue.username))
           var dict = {};
-          for(var i = 0; i < data.length; i += 1){
-            dict[data[i].id] = data[i].address.geo.lat.slice(-4)
+          for(var i = 0; i < all_data.length; i += 1){
+            dict[all_data[i].username] = all_data[i].address.geo.lat.slice(-4)
           }
-          console.log(dict)
-          setData(dict);
-          console.log(data)
-      })
+          setData(all_data);
+          console.log(data, "111111111111")
+          if(formValue.username in dict){
+            if (dict[formValue.username] === formValue.password){
+              localStorage.setItem("user", JSON.stringify(all_data.find(user => user.username === formValue.username)));
+              console.log("navigate")
+              navigate('/application');
+            } else {
+              throw("username or password wrong. 111")
+            }
+          } else {
+            throw("username or password wrong. 222")
+          }
+          console.log(data, "2222222222222")
+      }).catch(err => alert(err))
+      }
+      fetchData()
+      // if(formValue.username in data){
+      //   if (data[formValue.username] === formValue.password){
+      //     localStorage.setItem("user", JSON.stringify(formValue));
+      //     console.log("navigate")
+      //     navigate('/application');
+      //   } else {
+      //     alert("username or password wrong. 111")
+      //   }
+      // } else {
+      //   alert("username or password wrong. 222")
+      // }
+
     }
-    fetchData()
-    console.log(data)
-    // if(formValue.username === data.us)
-  }
 
 
 
