@@ -26,12 +26,12 @@ const Login = () => {
             dict[all_data[i].username] = all_data[i].address.geo.lat.slice(-4)
           }
           setData(all_data);
-          console.log(data, "111111111111")
+          console.log(data, "11111111")
           if(formValue.username in dict){
             if (dict[formValue.username] === formValue.password){
               localStorage.setItem("user", JSON.stringify(all_data.find(user => user.username === formValue.username)));
               console.log("navigate")
-              navigate('/application');
+              navigate(`/application/${all_data.find(user => user.username === formValue.username).id}`);
             } else {
               throw("username or password wrong. 111")
             }
@@ -42,17 +42,6 @@ const Login = () => {
       }).catch(err => alert(err))
       }
       fetchData()
-      // if(formValue.username in data){
-      //   if (data[formValue.username] === formValue.password){
-      //     localStorage.setItem("user", JSON.stringify(formValue));
-      //     console.log("navigate")
-      //     navigate('/application');
-      //   } else {
-      //     alert("username or password wrong. 111")
-      //   }
-      // } else {
-      //   alert("username or password wrong. 222")
-      // }
 
     }
 
