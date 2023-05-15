@@ -15,11 +15,11 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route path='/' element={<Login />} />
-      <Route path='/application' element={<Application />} >
-        <Route index path="/application/info" element={<Info />} />
-        <Route path="/application/todos" element={<Todos />} />
-        <Route path="/application/posts" element={<Posts />} />
-        <Route path="/application/albums" element={<Albums />} />
+      <Route path='/application/:id' element={<Application />} >
+        <Route index path="/application/:id/info" element={<Info />} />
+        <Route path="/application/:id/todos" element={<Todos />} />
+        <Route path="/application/:id/posts" element={<Posts />} />
+        <Route path="/application/:id/albums" element={<Albums />} />
       </Route>
       <Route path='*' element={<NotFound />} />
               
