@@ -9,6 +9,7 @@ import Todos from './components/todos';
 import Posts from './components/posts';
 import Albums from './components/albums';
 import NotFound from './components/notfound';
+import Photos from './components/Photos';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/application/:id/todos" element={<Todos />} />
         <Route path="/application/:id/posts" element={<Posts />} />
         <Route path="/application/:id/albums" element={<Albums />} />
+        <Route path="/application/:id/albums/:id/photos" element={<Photos />} />
       </Route>
       <Route path='*' element={<NotFound />} />
               
