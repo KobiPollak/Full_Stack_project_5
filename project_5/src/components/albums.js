@@ -2,8 +2,6 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import { Link, BrowserRouter, Route, Routes } from "react-router-dom";
-import Photos from "./Photos";
-
 
 
 function Albums() {
@@ -22,8 +20,6 @@ function Albums() {
         console.log(photos_json);
         const temp = albums_json.filter(album => album.userId === loggedinUser.id);
         setUserAlbums(temp);
-
-
     }
 
     useEffect(
@@ -32,8 +28,6 @@ function Albums() {
         }, []
 
     )
-
-
 
     return (
         <>
