@@ -39,3 +39,28 @@
     transform: scale(1.05);
     color: rgb(104, 104, 5);
   }
+
+  .button-cont {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    /* height: 4vh; */
+  }
+
+  .see-comments-button{
+    background-color: #59cec6;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .hidden{
+    visibility: hidden; 
+
+  }
+
+  li{
+    list-style-type: none;
+  }
