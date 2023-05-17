@@ -33,7 +33,7 @@ const Application = () => {
                     <Link to='/' onClick={handleLogout}>Logout</Link>
                 </div>
             </div>
-            <div>
+            <div className="welcome-container">
                 <h1>hello {JSON.parse(window.localStorage.getItem('user')).name} and welcome to our website</h1>
             </div>
             <Outlet />

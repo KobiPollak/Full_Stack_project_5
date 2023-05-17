@@ -24,3 +24,12 @@
     color: #333;
     text-decoration: none;
   }
+
+  .welcome-container{
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
