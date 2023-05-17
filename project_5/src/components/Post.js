@@ -23,7 +23,8 @@ export default function Post(props) {
         const comments = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${props.p.id}`);
         const comments_list = await comments.json();
         setCommentsList(comments_list);
-        e.target.style.visibility = "hidden";
+        // e.target.style.visibility = "hidden";
+        e.target.classList.add("hidden");
     }
 
     return (
@@ -41,7 +42,15 @@ export default function Post(props) {
                     <label>Body: </label>
                     <label>{props.p.body}</label>
                 </div>
-                <button style={{ visibility: props.isSelected ? "visible" : "hidden" }} onClick={(e) => importComments(e)} > Show Comments</button>
+                <div className="button-cont">
+                    <button 
+                    id={`showB-${props.p.id}`}
+                    className={`see-comments-button ${props.isSelected ? "" : "hidden"}` }
+                    // style={{ visibility: props.isSelected ? "visible" : "hidden" }} 
+                    onClick={(e) => importComments(e)} > 
+                    Show Comments
+                    </button>
+                </div>
                 {commentsList.map(
                     (comment) => <li>
                         <div className="post-card-title">
@@ -55,8 +64,20 @@ export default function Post(props) {
 
                     </li>
                 )}
-                <button style={{ visibility: commentsList.length === 0  ? "hidden" : "visible" }} onClick={() => setCommentsList([])} > Hide Comments</button>
-
+                <div className="button-cont">
+                    {/* <button className='see-comments-button' style={{ visibility: commentsList.length === 0  ? "hidden" : "visible" }} onClick={() => setCommentsList([])} > Hide Comments</button> */}
+                    <button 
+                    className={`see-comments-button ${commentsList.length === 0 ? "hidden" : ""}` }
+                    // style={{ visibility: commentsList.length === 0  ? "hidden" : "visible" }} 
+                    onClick={() => {
+                        setCommentsList([])
+                        console.log(document.getElementById(`showB-${props.p.id}`).classList)
+                        document.getElementById(`showB-${props.p.id}`).classList.remove("hidden")
+                        console.log(document.getElementById(`showB-${props.p.id}`).classList)
+                        }} > 
+                    Hide Comments
+                    </button>
+                </div>
 
             </div>
         </>

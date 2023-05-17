@@ -9,10 +9,11 @@ const Posts = () => {
     const userId = loggedInUser.id;
 
     async function importData() {
-        const posts_list = await fetch("https://jsonplaceholder.typicode.com/posts");
+        const posts_list = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`)
+        // const posts_list = await fetch("https://jsonplaceholder.typicode.com/posts");
         const post_list_json = await posts_list.json();
-        const temp = post_list_json.filter(post => post.userId === userId);
-        setData(temp);
+        // const temp = post_list_json.filter(post => post.userId === userId);
+        setData(post_list_json);
     }
 
     useEffect(

@@ -30,7 +30,7 @@ const Application = () => {
                     <Link to={`/application/${user_id}/albums`}>Albums</Link>
                 </div>
                 <div className="navbar__right">
-                    <Link to='/' onClick={handleLogout}>Logout</Link>
+                    <Link to='/login' onClick={handleLogout}>Logout</Link>
                 </div>
             </div>
             <div className="welcome-container">

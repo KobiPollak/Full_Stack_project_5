@@ -5,17 +5,17 @@ import './todos.css'
 
 const Todos = () => {
     const [todo_list, setTodo_list] = useState([]);
-    const [sorting, setSorting] = useState("uncompleted"); // default sorting option
+    const [sorting, setSorting] = useState("id"); // default sorting option
 
     useEffect(() => {
         const user_id = JSON.parse(localStorage.getItem('user')).id
 
         async function importTodos() {
-            const todo_list = await fetch('https://jsonplaceholder.typicode.com/todos')
+            const todo_list = await fetch(`https://jsonplaceholder.typicode.com/todos?userId=${user_id}`)
             const data = await todo_list.json()
-            const user_todos = data.filter(todo => todo.userId === user_id)
-            setTodo_list(user_todos)
-            console.log(user_todos[7])
+            // const user_todos = data.filter(todo => todo.userId === user_id)
+            setTodo_list(data)
+            // console.log(user_todos[7])
         }
 
         importTodos()
@@ -59,7 +59,7 @@ const Todos = () => {
         const user = todo_list.find(user => user.id === id)
         const index = todo_list.indexOf(user)
         console.log(user)
-        const new_list = todo_list.filter(function(el) { return el != user; });
+        const new_list = todo_list.filter(function(el) { return el !== user; });
         console.log(new_list)
         user.completed = !user.completed
         new_list.splice(index, 0, user)

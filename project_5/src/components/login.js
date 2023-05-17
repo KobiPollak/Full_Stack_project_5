@@ -16,30 +16,27 @@ const Login = () => {
     const handleSubmit = event => {
       event.preventDefault();
       async function fetchData() {
-
-        await fetch('https://jsonplaceholder.typicode.com/users')
+        await fetch(`https://jsonplaceholder.typicode.com/users?username=${formValue.username}`).
+        then(response => response.json()).
+        then(th => console.log(th))
+        await fetch(`https://jsonplaceholder.typicode.com/users?username=${formValue.username}`)
           .then(response => response.json())
-          .then(all_data => {
-          console.log(all_data.find(user => user.username === formValue.username))
-          var dict = {};
-          for(var i = 0; i < all_data.length; i += 1){
-            dict[all_data[i].username] = all_data[i].address.geo.lat.slice(-4)
-          }
-          setData(all_data);
-          console.log(data, "11111111")
-          if(formValue.username in dict){
-            if (dict[formValue.username] === formValue.password){
-              localStorage.setItem("user", JSON.stringify(all_data.find(user => user.username === formValue.username)));
+          .then(user => {
+            if(user.length === 0){
+              throw("username or password wrong. 000")
+            }
+            setData(user[0]);
+            console.log(user[0])
+            console.log(data, "11111111")
+            if (user[0].address.geo.lat.slice(-4) === formValue.password){
+              localStorage.setItem("user", JSON.stringify(user[0]));
               console.log("navigate")
-              navigate(`/application/${all_data.find(user => user.username === formValue.username).id}`);
+              navigate(`/application/${user[0].id}`);
             } else {
               throw("username or password wrong. 111")
             }
-          } else {
-            throw("username or password wrong. 222")
-          }
-          console.log(data, "2222222222222")
-      }).catch(err => alert(err))
+            console.log(data, "2222222222222")
+            }).catch(err => alert(err))
       }
       fetchData()
 

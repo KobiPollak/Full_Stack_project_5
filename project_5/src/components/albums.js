@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { Link, BrowserRouter, Route, Routes } from "react-router-dom";
 
+import './albums.css'
+
 
 function Albums() {
 
@@ -31,14 +33,23 @@ function Albums() {
 
     return (
         <>
-            <h1>Albums</h1>
-            <ol>
-                {user_albums.map((x) =>
-                (<div key={x.id}>
-                    <li><Link to={`/application/${loggedInUser.id}/albums/${x.id}/photos`} state={x.id}>{x.title}</Link> </li>
-                </div>)
-                )}
+        <h1 className="title">Albums</h1>
+        <div className="album-list-container">
+            <ol className="album-list">
+                {user_albums.map((album) => (
+                <Link
+                    to={`/application/${loggedInUser.id}/albums/${album.id}/photos`}
+                    state={album.id}
+                    key={album.id}
+                    className="album-item-link"
+                >
+                    <div className="album-item">
+                    <span className="album-title">{album.title}</span>
+                    </div>
+                </Link>
+                ))}
             </ol>
+        </div>
         </>
     )
 
