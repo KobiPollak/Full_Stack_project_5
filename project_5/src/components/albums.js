@@ -6,25 +6,25 @@ import { Link, BrowserRouter, Route, Routes } from "react-router-dom";
 
 function Albums() {
 
-    const loggedinUser = JSON.parse(localStorage.getItem("user"));
+    const loggedInUser = JSON.parse(localStorage.getItem("user"));
 
     const [user_albums, setUserAlbums] = useState([]);
 
-    async function importAlboms() {
+    async function importAlbums() {
         const albums_list = await fetch('https://jsonplaceholder.typicode.com/albums');
         const albums_json = await albums_list.json();
 
 
-        const photos_list = await fetch('https://jsonplaceholder.typicode.com/photos');
-        const photos_json = await photos_list.json();
-        console.log(photos_json);
-        const temp = albums_json.filter(album => album.userId === loggedinUser.id);
+        // const photos_list = await fetch('https://jsonplaceholder.typicode.com/photos');
+        // const photos_json = await photos_list.json();
+        // console.log(photos_json);
+        const temp = albums_json.filter(album => album.userId === loggedInUser.id);
         setUserAlbums(temp);
     }
 
     useEffect(
         () => {
-            importAlboms()
+            importAlbums()
         }, []
 
     )
@@ -34,9 +34,9 @@ function Albums() {
             <h1>Albums</h1>
             <ol>
                 {user_albums.map((x) =>
-                (<>
-                    <li><Link to={`/application/:id/albums/${x.id}/photos`} state={x.id}>{x.title}</Link> </li>
-                </>)
+                (<div key={x.id}>
+                    <li><Link to={`/application/${loggedInUser.id}/albums/${x.id}/photos`} state={x.id}>{x.title}</Link> </li>
+                </div>)
                 )}
             </ol>
         </>
