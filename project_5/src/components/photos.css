@@ -1,0 +1,42 @@
+.photos-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 1000px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .photo-item {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+  }
+  
+  .load-more-button {
+    background-color: #59cec6;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .load-more-button:hover {
+    background-color: #5d7ada;
+  }
+
+  .title{
+    text-align: center;
+    margin: 20px;
+  }
