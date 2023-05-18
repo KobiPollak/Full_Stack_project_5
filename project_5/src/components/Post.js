@@ -1,22 +1,11 @@
 import React, { useState } from 'react'
 
-import './post.css'
+import './styles/post.css'
 
 export default function Post(props) {
 
-    let [selectedPostId, setSelectedPostId] = useState(1);
-    let [pid, setPid] = useState(props.p.id);
     let [commentsList, setCommentsList] = useState([]);
 
-    // const handlePostClick = (postId) => {
-    //     setSelectedPostId((prevSelectedPostId) => {
-    //       if (prevSelectedPostId === postId) {
-    //         return null; // If the clicked post is already selected, deselect it
-    //       } else {
-    //         return postId; // Otherwise, select the clicked post
-    //       }
-    //     });
-    //   };
 
 
     async function importComments(e){
@@ -52,7 +41,7 @@ export default function Post(props) {
                     </button>
                 </div>
                 {commentsList.map(
-                    (comment) => <li>
+                    (comment, index) => <li>
                         <div className="post-card-title">
                             <label>Name: </label>
                             <label>{comment.name}</label>
@@ -61,19 +50,15 @@ export default function Post(props) {
                             <label>Body: </label>
                             <label>{comment.body}</label>
                         </div>
-
+                        {index < commentsList.length - 1 && <hr className="horizontal-line" />}
                     </li>
                 )}
                 <div className="button-cont">
-                    {/* <button className='see-comments-button' style={{ visibility: commentsList.length === 0  ? "hidden" : "visible" }} onClick={() => setCommentsList([])} > Hide Comments</button> */}
                     <button 
-                    className={`see-comments-button ${commentsList.length === 0 ? "hidden" : ""}` }
-                    // style={{ visibility: commentsList.length === 0  ? "hidden" : "visible" }} 
+                    className={`see-comments-button ${commentsList.length === 0 ? "hidden" : ""}` } 
                     onClick={() => {
                         setCommentsList([])
-                        console.log(document.getElementById(`showB-${props.p.id}`).classList)
                         document.getElementById(`showB-${props.p.id}`).classList.remove("hidden")
-                        console.log(document.getElementById(`showB-${props.p.id}`).classList)
                         }} > 
                     Hide Comments
                     </button>

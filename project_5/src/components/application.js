@@ -1,6 +1,7 @@
 import React , {useState, useEffect} from "react";
 import { Link, Outlet, Route, Routes } from "react-router-dom";
-import './application.css'
+
+import './styles/application.css'
 
 // import Info from './info';
 // import Todos from './todos';

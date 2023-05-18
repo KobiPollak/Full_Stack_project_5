@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { Link, BrowserRouter, Route, Routes } from "react-router-dom";
 
-import './albums.css'
+import './styles/albums.css'
 
 
 function Albums() {

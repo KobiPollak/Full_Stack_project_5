@@ -1,6 +1,7 @@
 import React , {useState, useEffect} from "react";
 import { useNavigate } from 'react-router-dom';
-import './login.css'
+
+import './styles/login.css'
 
 const Login = () => {
     const [formValue, setFormValues] = useState({ username: '', password: '' });
@@ -16,9 +17,9 @@ const Login = () => {
     const handleSubmit = event => {
       event.preventDefault();
       async function fetchData() {
-        await fetch(`https://jsonplaceholder.typicode.com/users?username=${formValue.username}`).
-        then(response => response.json()).
-        then(th => console.log(th))
+        // await fetch(`https://jsonplaceholder.typicode.com/users?username=${formValue.username}`).
+        // then(response => response.json()).
+        // then(th => console.log(th))
         await fetch(`https://jsonplaceholder.typicode.com/users?username=${formValue.username}`)
           .then(response => response.json())
           .then(user => {

@@ -1,7 +1,7 @@
 import React , {useState, useEffect} from "react";
 import { useLocation } from 'react-router-dom';
 
-import './todos.css'
+import './styles/todos.css'
 
 const Todos = () => {
     const [todo_list, setTodo_list] = useState([]);

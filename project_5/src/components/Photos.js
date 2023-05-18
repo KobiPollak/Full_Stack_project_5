@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {useParams} from "react-router-dom";
 
-import './photos.css'
+import './styles/photos.css'
 
 
 export default function Photos() {
@@ -36,12 +36,15 @@ export default function Photos() {
     function importPhotos() {
         fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${params["id"]}&_limit=10&_start=${photoCount}`)
           .then(response => {
-            if (!response.ok) {
-              throw new Error('Error fetching photos');
-            }
+            // if (!response.ok) {
+            //   throw new Error('Error fetching photos');
+            // }
             return response.json();
           })
           .then(data => {
+            if(data.length === 0){
+              throw new Error('Error fetching photos')
+            }
             console.log(data)
             // setPhotoCount(prevCount => prevCount + 10);
             setUserPhotos(prevPhotos => [...prevPhotos, ...data]);
@@ -49,6 +52,8 @@ export default function Photos() {
           })
           .catch(error => {
             alert('Error fetching photos:', error);
+            var button = document.getElementById('load-more-button');
+            button.disabled = true;
           });
       }
 
@@ -79,7 +84,7 @@ export default function Photos() {
       </div>
 
       <div className="button-container">
-        <button onClick={fetchMorePhotos} className="load-more-button">
+        <button id="load-more-button" onClick={fetchMorePhotos} className="load-more-button">
           Load 10 More
         </button>
       </div>
