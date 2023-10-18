@@ -8,8 +8,8 @@ To get started with this project, follow these steps:
 
 #Clone the repository to your local machine:
 
-   ```bash
-   git clone <[repository-url](https://github.com/KobiPollak/Full_Stack_project_5)>
+  ```bash
+   git clone <https://github.com/KobiPollak/Full_Stack_project_5>
 # Install the project dependencies using npm or yarn:
 npm install
 # or
@@ -19,7 +19,7 @@ yarn install
 npm start
 # or
 yarn start
-
+```
 ## Using the Application
 
 ### Login
