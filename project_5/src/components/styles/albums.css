@@ -1,83 +1,33 @@
-.title{
-    text-align: center;
-    margin: 20px;
+/* .title {
+  text-align: center;
+  margin: 20px;
+} */
+
+.album-item-link {
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  width: 100%;
 }
-/*
-.album-list-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-    
-  }
-  
-  .album-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .album-item {
-    background-color: #f1f1f1;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-left: 50px;
-    margin-right: 50px;
-    max-width: calc(100% - 100px);
-  }
-  
-  .album-item:hover {
-    background-color: #e0e0e0;
-  }
 
-  .album-item a {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  .album-item a:hover {
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
-  } */
-  .album-item-link {
-    text-align: center;
-    text-decoration: none;
-    color: inherit;
-    display: inline-block;
-    width: 100%;
-  }
-  
-  .album-item {
-    background-color: #f1f1f1;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-left: 200px;
-    margin-right: 200px;
-    max-width: calc(100% - 100px);
-    height: 50px;
-  }
-  
-  .album-item:hover {
-    background-color: #e0e0e0;
-  }
-  
-  .album-title {
-    display: block;
-  }
+.album-item {
+  background-color: #f1f1f1;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-left: 200px;
+  margin-right: 200px;
+  max-width: calc(100% - 100px);
+  height: 50px;
+  transition: background-color 0.2s;
+}
 
-  .album-item-link:hover .album-item {
-    background-color: #e0e0e0;
-  }
+.album-item:hover {
+  background-color: #e0e0e0;
+}
 
-  .album-title:hover{
-    background-color: #e0e0e0;
-  }
-
-  .pp{
-    background-color: #e0e0e0;
-  }
+.album-title {
+  display: inline-block;
+}

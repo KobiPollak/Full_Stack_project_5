@@ -12,13 +12,11 @@ export default function Post(props) {
         const comments = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${props.p.id}`);
         const comments_list = await comments.json();
         setCommentsList(comments_list);
-        // e.target.style.visibility = "hidden";
         e.target.classList.add("hidden");
     }
 
     return (
         <>
-
             <div
                 className={`post-card ${props.isSelected ? 'selected' : ''}`}
                 onClick={() => props.handleClick(props.p.id)}
@@ -35,7 +33,6 @@ export default function Post(props) {
                     <button 
                     id={`showB-${props.p.id}`}
                     className={`see-comments-button ${props.isSelected ? "" : "hidden"}` }
-                    // style={{ visibility: props.isSelected ? "visible" : "hidden" }} 
                     onClick={(e) => importComments(e)} > 
                     Show Comments
                     </button>

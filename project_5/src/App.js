@@ -1,6 +1,5 @@
-import logo from './logo.svg';
-import {BrowserRouter, Routes, Route, redirect as Redirect} from 'react-router-dom'
-import React, {useEffect} from 'react';
+import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
+import React from 'react';
 import './App.css';
 import Login from './components/login'
 import Application from './components/application'
@@ -16,8 +15,8 @@ function App() {
   return (
     <BrowserRouter>
     <Routes>
+      <Route path='/' element={<Navigate to="/login" replace/>} />
       <Route exact path='/login' element={<Login />}/>
-      {/* <Route path='/login' element={<Login />} /> */}
       <Route path='/application/:id' element={<Application />} >
         <Route index path="/application/:id/info" element={<Info />} />
         <Route path="/application/:id/todos" element={<Todos />} />

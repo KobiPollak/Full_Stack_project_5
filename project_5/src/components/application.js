@@ -1,15 +1,11 @@
-import React , {useState, useEffect} from "react";
-import { Link, Outlet, Route, Routes } from "react-router-dom";
+import React  from "react";
+import { Link, Outlet, useParams } from "react-router-dom";
 
 import './styles/application.css'
 
-// import Info from './info';
-// import Todos from './todos';
-// import Posts from './posts';
-// import Albums from './albums';
-
 const Application = () => {
-    const user_id = JSON.parse(localStorage.getItem('user')).id
+    const user_name = JSON.parse(localStorage.getItem('user')).name
+    const params = useParams();
 
     const handleLogout = () => {
         localStorage.removeItem("user");
@@ -22,20 +18,20 @@ const Application = () => {
         <>
             <div className="navbar">
                 <div className="navbar__left">
-                    <Link to={`/application/${user_id}/info`}>Info</Link>
+                    <Link to={`/application/${params['id']}/info`}>Info</Link>
                     <span className="navbar__separator"></span>
-                    <Link to={`/application/${user_id}/todos`}>Todos</Link>
+                    <Link to={`/application/${params['id']}/todos`}>Todos</Link>
                     <span className="navbar__separator"></span>
-                    <Link to={`/application/${user_id}/posts`}>Posts</Link>
+                    <Link to={`/application/${params['id']}/posts`}>Posts</Link>
                     <span className="navbar__separator"></span>
-                    <Link to={`/application/${user_id}/albums`}>Albums</Link>
+                    <Link to={`/application/${params['id']}/albums`}>Albums</Link>
                 </div>
                 <div className="navbar__right">
                     <Link to='/login' onClick={handleLogout}>Logout</Link>
                 </div>
             </div>
             <div className="welcome-container">
-                <h1>hello {JSON.parse(window.localStorage.getItem('user')).name} and welcome to our website</h1>
+                <h1>hello {user_name} and welcome to our website </h1>
             </div>
             <Outlet />
         </>

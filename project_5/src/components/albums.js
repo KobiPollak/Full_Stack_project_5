@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import React from "react";
-import { Link, BrowserRouter, Route, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import './styles/albums.css'
 
@@ -13,15 +13,10 @@ function Albums() {
     const [user_albums, setUserAlbums] = useState([]);
 
     async function importAlbums() {
-        const albums_list = await fetch('https://jsonplaceholder.typicode.com/albums');
+        const albums_list = await fetch(`https://jsonplaceholder.typicode.com/albums?userId=${loggedInUser.id}`);
         const albums_json = await albums_list.json();
 
-
-        // const photos_list = await fetch('https://jsonplaceholder.typicode.com/photos');
-        // const photos_json = await photos_list.json();
-        // console.log(photos_json);
-        const temp = albums_json.filter(album => album.userId === loggedInUser.id);
-        setUserAlbums(temp);
+        setUserAlbums(albums_json);
     }
 
     useEffect(

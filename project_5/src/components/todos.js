@@ -1,5 +1,4 @@
 import React , {useState, useEffect} from "react";
-import { useLocation } from 'react-router-dom';
 
 import './styles/todos.css'
 
@@ -13,9 +12,7 @@ const Todos = () => {
         async function importTodos() {
             const todo_list = await fetch(`https://jsonplaceholder.typicode.com/todos?userId=${user_id}`)
             const data = await todo_list.json()
-            // const user_todos = data.filter(todo => todo.userId === user_id)
             setTodo_list(data)
-            // console.log(user_todos[7])
         }
 
         importTodos()
@@ -23,13 +20,10 @@ const Todos = () => {
 
     const sortTodos = () => {
         if (sorting === "uncompleted") {
-            // setTodo_list(todo_list.filter((todo) => !todo.completed))
           return todo_list.filter((todo) => !todo.completed);
         } else if (sorting === "id") {
-            // setTodo_list(todo_list.sort((a, b) => a.id - b.id))
           return todo_list.sort((a, b) => a.id - b.id);
         } else if (sorting === "random") {
-            // setTodo_list(todo_list.sort(() => Math.random() - 0.5))
           return todo_list.sort(() => Math.random() - 0.5);
         } else {
           return todo_list;
@@ -37,24 +31,6 @@ const Todos = () => {
       };
 
     const handleTodoClick = (id) => {
-        // async function postData() {
-        //     const response = await fetch('https://jsonplaceholder.typicode.com/', {
-        //       method: "POST", // *GET, POST, PUT, DELETE, etc.
-        //       mode: "cors", // no-cors, *cors, same-origin
-        //       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-        //       credentials: "same-origin", // include, *same-origin, omit
-        //       headers: {
-        //         "Content-Type": `/todos`,
-        //         // 'Content-Type': 'application/x-www-form-urlencoded',
-        //       },
-        //       redirect: "follow", // manual, *follow, error
-        //       referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-        //       body: JSON.stringify(newValue), // body data type must match "Content-Type" header
-        //     });
-        //     return response.json(); // parses JSON response into native JavaScript objects
-        //   }
-        // const response = postData()
-        // console.log(response)
         console.log(todo_list)
         const user = todo_list.find(user => user.id === id)
         const index = todo_list.indexOf(user)
@@ -63,7 +39,6 @@ const Todos = () => {
         console.log(new_list)
         user.completed = !user.completed
         new_list.splice(index, 0, user)
-        // new_list.push(user)
         setTodo_list(new_list)
     }
 
