@@ -6,16 +6,23 @@ This React project is designed to help you learn about REST APIs by interacting 
 
 To get started with this project, follow these steps:
 
-#Clone the repository to your local machine:
+- Clone the repository to your local machine:
 
-  ```bash
-   git clone <https://github.com/KobiPollak/Full_Stack_project_5>
-# Install the project dependencies using npm or yarn:
+```bash
+git clone <https://github.com/KobiPollak/Full_Stack_project_5>
+```
+- Navigate to the project:
+```bash
+cd project_6
+```
+- Install the project dependencies using npm or yarn:
+```bash
 npm install
 # or
 yarn install
-
-# Start the development server:
+```
+- Start the development server:
+```bash
 npm start
 # or
 yarn start
