@@ -1,4 +1,4 @@
-# Full_Stack_project_5
+# Learn_REST_With_React
 
 This React project is designed to help you learn about REST APIs by interacting with the [JSONPlaceholder](https://jsonplaceholder.typicode.com/) web service. JSONPlaceholder is a fake online REST API for testing and prototyping.
 
